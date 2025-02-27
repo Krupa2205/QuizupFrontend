@@ -1,0 +1,47 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,500;1,500&family=Sigmar&display=swap');
+
+/* Apply Oswald as the default font for the entire project */
+body {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500; /* Medium-bold */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply Rubik for specific elements (e.g., buttons, inputs) */
+button, input, textarea {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300; /* Medium-bold */
+}
+
+/* Apply Sigmar for special headings */
+h1, h2 {
+  font-family: 'Sigmar', cursive;
+  font-weight: 200;
+  
+}
+
+/* Optional: Create reusable classes for fonts */
+.oswald-font {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500; /* Medium-bold */
+}
+
+.rubik-font {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400; /* Medium-bold */
+}
+
+.sigmar-font {
+  font-family: 'Sigmar', cursive;
+  /* Sigmar is naturally bold, no need to adjust font-weight */
+}
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

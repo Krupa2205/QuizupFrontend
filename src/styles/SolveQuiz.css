@@ -1,0 +1,201 @@
+.solve-quiz-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Floating Animated Circles */
+.circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 182, 193, 0.7);
+  filter: blur(10px);
+}
+
+.pink-circle {
+  top: 10%;
+  left: 15%;
+}
+
+.pink-circle2 {
+  bottom: 20%;
+  right: 20%;
+}
+
+/* Scrollable Card Section */
+.scroll-container {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  position: relative;
+  max-width: 1200px;
+}
+
+/* Wrapper for Cards */
+.card-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 15px;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+
+.card-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cards */
+.card {
+  min-width: 200px;
+  min-height: 200px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Images */
+.card img {
+  width: 80%;
+  border-radius: 5px;
+}
+
+/* 3D Gradient Button */
+.quiz-btn {
+  margin-top: 10px;
+  background: linear-gradient(135deg, pink, white);
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 3px 3px 10px rgba(255, 105, 180, 0.5);
+  transition: 0.3s;
+}
+
+.quiz-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 15px rgba(255, 105, 180, 0.7);
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.scroll-btn:hover {
+  background: white;
+  color: black;
+}
+
+.left {
+  left: -40px;
+}
+
+.right {
+  right: -40px;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    min-width: 150px;
+    min-height: 150px;
+  }
+
+  .scroll-btn {
+    font-size: 16px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    min-width: 120px;
+    min-height: 120px;
+  }
+
+  .scroll-btn {
+    font-size: 14px;
+    padding: 6px;
+  }
+}
+
+/* Home btn at SolveQUiz.jsx */
+
+/* ✅ Sticky Top Header */
+.top-header {
+  position: absolute;
+  top: 50px; /* Adjusted from 20px to give a bit more gap */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.3);
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: max-content;
+  gap: 12px;
+}
+
+/* ✅ Home Icon */
+.home-icon {
+  font-size: 26px;
+  color: #da498d;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.home-icon:hover {
+  transform: scale(1.2);
+  color: #da498d;
+}
+
+/* ✅ Username */
+.username {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fdf7f7;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.username:hover {
+  color: #da498d;
+}
+
+/* ✅ Push content down so it doesn’t overlap */
+.solve-quiz-container {
+  padding-top: 10px; /* Ensures space below the sticky header */
+  position: relative;
+  z-index: 1;
+}
