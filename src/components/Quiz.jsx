@@ -35,6 +35,7 @@ export default function QuizUI() {
     if (!category) return;
 
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category}`)
+    // API URL...
       .then((res) => res.json())
       .then((data) => {
         setQuestions(data);

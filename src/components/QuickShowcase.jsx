@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import quizImage from "../assets/Logo2.jpg";
 import "../styles/SolveQuiz.css";
+import { Link } from "react-router-dom";
 
 export default function QuizShowcase() {
   return (
@@ -35,25 +36,19 @@ export default function QuizShowcase() {
         </p>
 
         {/* Gradient Animated Button */}
-        <motion.a
-          href="/quiz"
-          className="inline-block mt-6 mr-4 px-6 py-3 text-lg font-semibold text-black bg-gradient-to-r from-pink-500 via-white to-black rounded-xl shadow-lg transition-transform transform hover:scale-105"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          whileHover={{ scale: 1.15 }}
-        >
-          Start Quiz 💻
-        </motion.a>
+        <Link
+  to="/quiz"
+  className="inline-block mt-6 mr-4 px-6 py-3 text-lg font-semibold text-black bg-gradient-to-r from-pink-500 via-white to-black rounded-xl shadow-lg transition-transform transform hover:scale-105"
+>
+  Start Quiz 💻
+</Link>
 
-        <motion.a
-          href="/review"
-          className="inline-block mt-6 px-6 py-3 text-lg font-semibold text-black bg-gradient-to-r from-pink-500 via-white to-black rounded-xl shadow-lg transition-transform transform hover:scale-105"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          whileHover={{ scale: 1.15 }}
-        >
-          Your Quiz Review ✨
-        </motion.a>
+<Link
+  to="/review"
+  className="inline-block mt-6 px-6 py-3 text-lg font-semibold text-black bg-gradient-to-r from-pink-500 via-white to-black rounded-xl shadow-lg transition-transform transform hover:scale-105"
+>
+  Your Quiz Review ✨
+</Link>
       </motion.div>
     </div>
   );
