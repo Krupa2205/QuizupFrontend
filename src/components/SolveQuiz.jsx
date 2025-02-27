@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import QuizCard from "./QuizCard";
 import "../styles/SolveQuiz.css";
 import ReactJs from "../assets/ReactjsImg.webp";
-import NodeJS from "../assets/NodejsImg.webp";
+import NodeJS from "../assets/NextJsImg.webp";
 import Tailwind from "../assets/TailwindCssImg.webp";
 import MongoDB from "../assets/MongoDBImg.webp";
 import JS from "../assets/JSImg.webp";
