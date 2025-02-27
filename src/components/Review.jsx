@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { FaHome, FaRegLightbulb } from "react-icons/fa"; 
 import "../styles/Review.css";
 import ReactJs from "../assets/ReactjsImg.webp";
-import NodeJS from "../assets/NextJsImg.webp";
+import NodeJS from "../assets/NodeJsImg.webp";
 import Tailwind from "../assets/TailwindCssImg.webp";
 import MongoDB from "../assets/MongoDBImg.webp";
 import JS from "../assets/JSImg.webp";
