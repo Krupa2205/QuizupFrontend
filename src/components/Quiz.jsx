@@ -33,10 +33,14 @@ export default function QuizUI() {
 
   useEffect(() => {
     if (!category) return;
-
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category}`)
-    // API URL...
-      .then((res) => res.json())
+  
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category.toLowerCase()}`) // Ensure lowercase
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         setQuestions(data);
         const savedProgress = localStorage.getItem(storageKey);

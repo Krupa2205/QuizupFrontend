@@ -84,12 +84,12 @@ function SolveQuiz() {
         </button>
         <div className="card-wrapper" ref={scrollRef}>
           {quizzes.map((quiz, index) => (
-            <QuizCard 
-              key={index} 
-              title={quiz.title} 
-              image={quiz.image} 
-              onClick={() => navigate(`/quiz/${quiz.title}`)}
-            />
+            <QuizCard
+            key={index}
+            title={quiz.title}
+            image={quiz.image}
+            onClick={() => navigate(`/quiz/${quiz.title.toLowerCase()}`)} // Ensure lowercase
+          />
           ))}
         </div>
         <button className="scroll-btn right" onClick={() => scrollRef.current.scrollBy({ left: 250, behavior: "smooth" })}>
