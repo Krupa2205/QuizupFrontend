@@ -34,7 +34,7 @@ export default function QuizUI() {
   useEffect(() => {
     if (!category) return;
 
-    fetch(`http://localhost:5000/api/quiz/${category}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category}`)
       .then((res) => res.json())
       .then((data) => {
         setQuestions(data);
