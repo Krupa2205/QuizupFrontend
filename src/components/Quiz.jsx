@@ -34,12 +34,16 @@ export default function QuizUI() {
   useEffect(() => {
     if (!category) return;
   
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category.toLowerCase()}`) // Ensure lowercase
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category.toLowerCase()}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
-        return res.json();
+        return res.text(); 
+      })
+      .then((text) => {
+        console.log("API Response:", text); 
+        return JSON.parse(text);
       })
       .then((data) => {
         setQuestions(data);
