@@ -47,10 +47,10 @@ const Review = () => {
         if (Array.isArray(data)) {
           setQuizProgress(data);
         } else {
-          console.error("Invalid data format from API:", data);
+          // console.error("Invalid data format from API:", data);
         }
       } catch (error) {
-        console.error("Error fetching quiz progress:", error);
+        // console.error("Error fetching quiz progress:", error);
       }
     };
 
