@@ -42,7 +42,7 @@ export default function QuizUI() {
         return res.text(); 
       })
       .then((text) => {
-        // console.log("API Response:", text); 
+        
         return JSON.parse(text);
       })
       .then((data) => {
