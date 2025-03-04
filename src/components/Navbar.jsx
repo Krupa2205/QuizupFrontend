@@ -71,7 +71,6 @@ export default function Navbar() {
               { name: "Home", action: () => handleNavigation("/") },
               { name: "SolveQuiz", action: () => handleNavigation("/quiz") },
               { name: "Review", action: () => handleNavigation("/review") },
-              { name: "Feedback", action: () => handleNavigation("/feedback") },
             ].map((item) => (
               <Button
                 key={item.name}
@@ -166,7 +165,7 @@ export default function Navbar() {
               { name: "Home", action: () => handleNavigation("/") },
               { name: "SolveQuiz", action: () => handleNavigation("/quiz") },
               { name: "Review", action: () => handleNavigation("/review") },
-              { name: "Feedback", action: () => handleNavigation("/feedback") },
+              
             ].map((item) => (
               <ListItem
                 button
