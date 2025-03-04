@@ -47,7 +47,7 @@ export default function Navbar() {
             "linear-gradient(45deg, #BFBBA9, #F7CFD8, #E195AB,#FFCFCF,#F2EFE7)",
           backgroundSize: "200% 200%",
           animation: `${gradientAnimation} 5s infinite alternate`,
-          top: 0, // Ensure it sticks to the top
+          top: 0,
           zIndex: 1301,
         }}
       >
@@ -79,9 +79,9 @@ export default function Navbar() {
                 sx={{
                   color: "black",
                   fontWeight: "bold",
-                  fontFamily: "'Rubik', sans-serif", // Use Rubik font for buttons
+                  fontFamily: "'Rubik', sans-serif", 
                   boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
-                  borderRadius: "20px", // Curved shape
+                  borderRadius: "20px", 
                   padding: "10px 20px",
                   backgroundColor: "white",
                   "&:hover": {
@@ -103,8 +103,8 @@ export default function Navbar() {
                 appearance={{
                   elements: {
                     userButtonAvatarBox: {
-                      width: 50, // Increased size
-                      height: 50, // Increased size
+                      width: 50,
+                      height: 50, 
                     },
                   },
                 }}
@@ -116,7 +116,7 @@ export default function Navbar() {
                   sx={{
                     bgcolor: "#FFCCE1",
                     color: "#DA498D",
-                    fontFamily: "'Rubik', sans-serif", // Use Rubik font for Sign In button
+                    fontFamily: "'Rubik', sans-serif", 
                   }}
                 >
                   Sign In
@@ -145,15 +145,15 @@ export default function Navbar() {
             width: "100%",
             height: "auto",
             backgroundColor: "rgba(0, 0, 0, 0.8)", 
-            backdropFilter: "blur(5px)", // Blur effect
-            top: "50px", // Position below the navbar
-            boxShadow: "none", // Remove default shadow
-            transition: "transform 0.3s ease-in-out", // Smooth transition
+            backdropFilter: "blur(5px)", 
+            top: "50px", 
+            boxShadow: "none", 
+            transition: "transform 0.3s ease-in-out", 
           },
         }}
       >
         <Box
-          onMouseLeave={() => setMenuOpen(false)} // Auto-close on cursor leave
+          onMouseLeave={() => setMenuOpen(false)} 
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -174,12 +174,12 @@ export default function Navbar() {
                 sx={{
                   padding: 2,
                   fontWeight: "bold",
-                  fontFamily: "'Oswald', sans-serif", // Use Oswald font for menu items
+                  fontFamily: "'Oswald', sans-serif", 
                   color: "white",
                   cursor: "pointer",
                   textAlign: "center",
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)", // Light hover effect
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
                   },
                 }}
                 onClick={item.action}
