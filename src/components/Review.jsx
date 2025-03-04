@@ -67,8 +67,8 @@ const Review = () => {
     (quiz) => quiz.correctAnswers > 0 || quiz.wrongAnswers > 0
   );
 
-  console.log("Quiz Progress:", quizProgress); 
-  console.log("Solved Quizzes:", solvedQuizzes); 
+  // console.log("Quiz Progress:", quizProgress); 
+  // console.log("Solved Quizzes:", solvedQuizzes); 
 
   return (
     <div className="relative min-h-screen flex flex-col bg-black text-white p-14 items-center overflow-hidden">
