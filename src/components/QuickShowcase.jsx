@@ -43,12 +43,6 @@ export default function QuizShowcase() {
   Start Quiz 💻
 </Link>
 
-<Link
-  to="/review"
-  className="inline-block mt-6 px-6 py-3 text-lg font-semibold text-black bg-gradient-to-r from-pink-500 via-white to-black rounded-xl shadow-lg transition-transform transform hover:scale-105"
->
-  Your Quiz Review ✨
-</Link>
       </motion.div>
     </div>
   );

@@ -6,7 +6,6 @@ import Quiz from "./components/Quiz";
 import About from "./components/About";
 import QuickShowcase from "./components/QuickShowcase";
 import Footer from "./components/Footer";
-import Review from "./components/Review"; // Ensure this import is correct
 import "./App.css";
 import './index.css';
 
@@ -30,7 +29,6 @@ function Layout() {
       <Routes>
         <Route path="/quiz" element={<SolveQuiz />} />
         <Route path="/quiz/:category" element={<Quiz />} />
-        <Route path="/review" element={<Review />} /> {/* Ensure this is correct */}
       </Routes>
 
       {!isQuizPage && !isReviewPage && <Footer />} 

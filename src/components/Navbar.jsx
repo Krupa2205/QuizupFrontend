@@ -65,35 +65,6 @@ export default function Navbar() {
             />
           </Box>
 
-          {/* Navbar Buttons (Visible on Large Screens) */}
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-            {[
-              { name: "Home", action: () => handleNavigation("/") },
-              { name: "SolveQuiz", action: () => handleNavigation("/quiz") },
-              { name: "Review", action: () => handleNavigation("/review") },
-            ].map((item) => (
-              <Button
-                key={item.name}
-                onClick={item.action}
-                sx={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontFamily: "'Rubik', sans-serif", 
-                  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
-                  borderRadius: "20px", 
-                  padding: "10px 20px",
-                  backgroundColor: "white",
-                  "&:hover": {
-                    backgroundColor: "lightpink",
-                    boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.4)",
-                  },
-                }}
-              >
-                {item.name}
-              </Button>
-            ))}
-          </Box>
-
           {/* User Profile and Menu Icon (Visible on Small Screens) */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             {isSignedIn ? (
@@ -134,7 +105,7 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-      {/* Dropdown Menu for Small Screens */}
+      {/* Dropdown Menu for Small Screens - Now Empty */}
       <Drawer
         anchor="right"
         open={menuOpen}
@@ -161,31 +132,7 @@ export default function Navbar() {
           }}
         >
           <List>
-            {[
-              { name: "Home", action: () => handleNavigation("/") },
-              { name: "SolveQuiz", action: () => handleNavigation("/quiz") },
-              { name: "Review", action: () => handleNavigation("/review") },
-              
-            ].map((item) => (
-              <ListItem
-                button
-                key={item.name}
-                sx={{
-                  padding: 2,
-                  fontWeight: "bold",
-                  fontFamily: "'Oswald', sans-serif", 
-                  color: "white",
-                  cursor: "pointer",
-                  textAlign: "center",
-                  "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  },
-                }}
-                onClick={item.action}
-              >
-                {item.name}
-              </ListItem>
-            ))}
+            {/* Menu items removed */}
           </List>
         </Box>
       </Drawer>

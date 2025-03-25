@@ -30,20 +30,20 @@ export default function QuizUI() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [promotionMessage, setPromotionMessage] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(60);
+  const [timerActive, setTimerActive] = useState(true);
+  const [showTimeUpPopup, setShowTimeUpPopup] = useState(false);
+  const [answersDisabled, setAnswersDisabled] = useState(false);
 
   useEffect(() => {
     if (!category) return;
-  
+
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category.toLowerCase()}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
-        return res.text(); 
-      })
-      .then((text) => {
-        
-        return JSON.parse(text);
+        return res.json();
       })
       .then((data) => {
         setQuestions(data);
@@ -56,9 +56,76 @@ export default function QuizUI() {
       .catch((err) => console.error("Error fetching questions:", err));
   }, [category]);
 
+  // Timer effect
+  useEffect(() => {
+    let timer;
+    if (timerActive && timeLeft > 0) {
+      timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+    } else if (timeLeft === 0 && timerActive) {
+      handleTimeUp();
+    }
+    return () => clearTimeout(timer);
+  }, [timeLeft, timerActive]);
+
+  const handleTimeUp = () => {
+    setTimerActive(false);
+    setAnswersDisabled(true);
+    setShowTimeUpPopup(true);
+    
+    // Show popup for 2 seconds before moving to next question
+    setTimeout(() => {
+      setShowTimeUpPopup(false);
+      moveToNextQuestion();
+    }, 2000);
+  };
+
+  const moveToNextQuestion = () => {
+    if (questionIndex < questions.length - 1) {
+      // Mark as wrong answer since user didn't answer in time
+      handleAnswer(-1);
+      const newIndex = questionIndex + 1;
+      setQuestionIndex(newIndex);
+      saveProgress(newIndex);
+      setSelectedAnswer(null);
+      // Reset timer for next question
+      setTimeLeft(60);
+      setTimerActive(true);
+      setAnswersDisabled(false);
+    }
+  };
+
   const saveProgress = (newIndex) => {
     const updatedProgress = { questionIndex: newIndex };
     localStorage.setItem(storageKey, JSON.stringify(updatedProgress));
+  };
+
+  const handleAnswer = async (selectedOptionIndex) => {
+    if (answersDisabled) return;
+    
+    const isCorrect = selectedOptionIndex === questions[questionIndex]?.answer;
+    setTimerActive(false);
+    setAnswersDisabled(true);
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/progress/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: user?.id,
+          category,
+          isCorrect,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to update progress");
+      }
+  
+      const data = await response.json();
+      console.log("Progress updated:", data);
+    } catch (error) {
+      console.error("Error updating progress:", error);
+    }
   };
 
   const nextQuestion = () => {
@@ -67,6 +134,10 @@ export default function QuizUI() {
       setQuestionIndex(newIndex);
       saveProgress(newIndex);
       setSelectedAnswer(null);
+      // Reset timer for next question
+      setTimeLeft(60);
+      setTimerActive(true);
+      setAnswersDisabled(false);
     }
   };
 
@@ -76,6 +147,10 @@ export default function QuizUI() {
       setQuestionIndex(newIndex);
       saveProgress(newIndex);
       setSelectedAnswer(null);
+      // Reset timer when going back
+      setTimeLeft(60);
+      setTimerActive(true);
+      setAnswersDisabled(false);
     }
   };
 
@@ -161,6 +236,28 @@ export default function QuizUI() {
         <p className="text-sm text-gray-300 mt-1">Badges</p>
       </div>
 
+      {/* Timer Display */}
+      <div className="mb-4 text-xl font-bold">
+        Time Left: {timeLeft}s
+      </div>
+
+      {/* Time Up Popup */}
+      <AnimatePresence>
+        {showTimeUpPopup && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 flex items-center justify-center z-50"
+          >
+            <div className="bg-red-500 text-white px-8 py-4 rounded-lg shadow-xl text-2xl font-bold">
+              Time's Up!
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Promotion Message */}
       <AnimatePresence>
         {promotionMessage && (
@@ -192,8 +289,16 @@ export default function QuizUI() {
             {questions[questionIndex]?.options?.map((option, index) => (
               <motion.button
                 key={index}
-                onClick={() => setSelectedAnswer(index)}
+                onClick={() => {
+                  if (!answersDisabled) {
+                    setSelectedAnswer(index);
+                    handleAnswer(index);
+                  }
+                }}
+                disabled={answersDisabled}
                 className={`w-full p-3 rounded-lg transition-all font-bold text-black shadow-md border border-gray-600 ${
+                  answersDisabled ? "opacity-70 cursor-not-allowed" : ""
+                } ${
                   selectedAnswer === index
                     ? index === questions[questionIndex]?.answer
                       ? "bg-green-400"
@@ -208,7 +313,7 @@ export default function QuizUI() {
         </motion.div>
       ) : (
         <p className="text-gray-400 mt-6">
-          ⚠️ No questions available. Check the API.
+          ⚠️ Questions will be available in just a few seconds... Please wait.
         </p>
       )}
 
