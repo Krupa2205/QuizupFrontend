@@ -63,6 +63,7 @@ export default function Navbar() {
                 objectFit: "cover",
               }}
             />
+             <span style={{ fontWeight: 700, fontSize: "1.5rem", marginLeft: "10px" ,color: "#E53888" }}>QuizUp</span>
           </Box>
 
           {/* User Profile and Menu Icon (Visible on Small Screens) */}
