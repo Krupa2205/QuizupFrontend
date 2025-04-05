@@ -11,3 +11,9 @@ Currently, two official plugins are available:
 
 
 
+" PLZ DON't JUST COPY and PASTE OTHER'S PROJECT'S :) "
+
+
+
+
+
