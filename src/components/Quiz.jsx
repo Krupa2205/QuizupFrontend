@@ -41,7 +41,7 @@ export default function QuizUI() {
 
     setLoading(true);
     // Using localhost URL temporarily - replace with your backend URL when ready
-    fetch(`http://localhost:5000/api/${category.toLowerCase()}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/quiz/${category.toLowerCase()}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
@@ -112,7 +112,7 @@ export default function QuizUI() {
     setAnswersDisabled(true);
   
     try {
-      const response = await fetch("http://localhost:5000/api/progress/update", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/progress/update`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

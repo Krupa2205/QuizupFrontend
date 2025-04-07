@@ -1,24 +1,21 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
-
-
-
-
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path'; // Import path
+import path from 'path';
 
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"), // ✅ Ensure alias is correctly set
+export default defineConfig(({ mode }) => {
+  // Load env file based on `mode` in the current working directory
+  const env = loadEnv(mode, process.cwd(), '');
+
+  return {
+    plugins: [react()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+      },
     },
-  },
+    define: {
+      'process.env': env, // Expose all env variables
+      __APP_ENV__: JSON.stringify(env.APP_ENV),
+    },
+  };
 });
