@@ -106,7 +106,7 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-      {/* Dropdown Menu for Small Screens - Now Empty */}
+      {/* Dropdown Menu for Small Screens with Home and Quiz items */}
       <Drawer
         anchor="right"
         open={menuOpen}
@@ -133,7 +133,36 @@ export default function Navbar() {
           }}
         >
           <List>
-            {/* Menu items removed */}
+            <ListItem 
+              button 
+              onClick={() => handleNavigation("/")}
+              sx={{
+                color: "white",
+                textAlign: "center",
+                fontSize: "1.2rem",
+                padding: "15px 30px",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.1)"
+                }
+              }}
+            >
+              Home
+            </ListItem>
+            <ListItem 
+              button 
+              onClick={() => handleNavigation("/quiz")}
+              sx={{
+                color: "white",
+                textAlign: "center",
+                fontSize: "1.2rem",
+                padding: "15px 30px",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.1)"
+                }
+              }}
+            >
+              Quiz
+            </ListItem>
           </List>
         </Box>
       </Drawer>
