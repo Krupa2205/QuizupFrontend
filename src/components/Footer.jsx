@@ -51,7 +51,7 @@ const Footer = () => {
             animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
             transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
           >
-            ❤✨
+            ❤
           </motion.span>
           By Krupa
         </p>
